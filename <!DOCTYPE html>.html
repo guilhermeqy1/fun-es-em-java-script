@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Curiosidades sobre Tecnologia</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #6a11cb 100%);
+      padding: 20px;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 50px 40px;
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      max-width: 600px;
+      width: 100%;
+      text-align: center;
+      animation: fadeIn 0.8s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    h1 {
+      font-size: 2rem;
+      color: #1e3c72;
+      margin-bottom: 10px;
+      letter-spacing: 0.5px;
+    }
+
+    h1 span {
+      background: linear-gradient(90deg, #1e3c72, #6a11cb);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .subtitulo {
+      font-size: 0.95rem;
+      color: #666;
+      margin-bottom: 30px;
+      font-weight: 400;
+    }
+
+    .mensagem {
+      font-size: 1.1rem;
+      color: #333;
+      line-height: 1.6;
+      margin: 25px 0 35px;
+      padding: 25px 20px;
+      min-height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #f0f4ff 0%, #e8eeff 100%);
+      border-left: 5px solid #6a11cb;
+      border-radius: 12px;
+      transition: all 0.4s ease;
+      box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    .mensagem.animar {
+      animation: pulse 0.5s ease;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.03); }
+      100% { transform: scale(1); }
+    }
+
+    .botao {
+      background: linear-gradient(135deg, #1e3c72 0%, #6a11cb 100%);
+      color: #fff;
+      border: none;
+      padding: 15px 40px;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(106, 17, 203, 0.35);
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+    }
+
+    .botao:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 28px rgba(106, 17, 203, 0.5);
+    }
+
+    .botao:active {
+      transform: translateY(0);
+      box-shadow: 0 6px 14px rgba(106, 17, 203, 0.4);
+    }
+
+    .rodape {
+      margin-top: 25px;
+      font-size: 0.8rem;
+      color: #999;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>💻 Curiosidades sobre <span>Tecnologia</span></h1>
+    <p class="subtitulo">Descubra fatos surpreendentes sobre o mundo digital</p>
+
+    <p class="mensagem">Clique no botão abaixo para descobrir uma curiosidade!</p>
+
+    <button class="botao">Mostrar curiosidade</button>
+
+    <p class="rodape">Atividade de JavaScript — Funções</p>
+  </div>
+
+  <script>
+    // Seleciona os elementos da página
+    const botao = document.querySelector(".botao");
+    const mensagem = document.querySelector(".mensagem");
+
+    // Lista de curiosidades
+    const curiosidades = [
+      "O primeiro bug de computador foi uma mariposa real, encontrada em 1947.",
+      "O primeiro mouse de computador era feito de madeira.",
+      "O nome 'Wi-Fi' não significa nada — foi criado por uma empresa de marketing.",
+      "Existem mais dispositivos conectados à internet do que pessoas no mundo.",
+      "O primeiro site do mundo ainda está no ar: info.cern.ch.",
+      "Cerca de 90% dos dados do mundo foram criados nos últimos dois anos."
+    ];
+
+    let indice = 0;
+
+    // Função que altera a mensagem exibida na página
+    function mostrarCuriosidade() {
+      mensagem.textContent = curiosidades[indice];
+
+      // Efeito visual de animação ao trocar a mensagem
+      mensagem.classList.remove("animar");
+      void mensagem.offsetWidth; // força reiniciar a animação
+      mensagem.classList.add("animar");
+
+      // Avança para a próxima curiosidade (em loop)
+      indice = (indice + 1) % curiosidades.length;
+    }
+
+    // Executa a função quando o botão for clicado
+    botao.addEventListener("click", mostrarCuriosidade);
+  </script>
+
+</body>
+</html>
